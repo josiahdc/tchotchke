@@ -54,7 +54,7 @@ class Logger:
             raise TypeError()
         result = {}
         if data is not None:
-            for key, value in data:
+            for key, value in data.items():
                 result[key] = repr(value)
         result["message"] = message
         return result
