@@ -52,9 +52,9 @@ class Logger:
             raise TypeError()
         if not isinstance(data, dict) and data is not None:
             raise TypeError()
-        output_log = {
-            "message": message,
-        }
+        result = {}
         if data is not None:
-            output_log.update(data)
-        return output_log
+            for key, value in data:
+                result[key] = repr(value)
+        result["message"] = message
+        return result

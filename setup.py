@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 installation_requirements = [
     "loguru==0.5.3",
@@ -9,10 +9,11 @@ installation_requirements = [
 setup(
     name="tchotchke",
     description="Trinkets and baubles to adorn your pythonic pursuits.",
-    version="0.0.1",
+    version="0.1.7",
     url="https://github.com/josiahdc/tchotchke",
     author="Josiah Chapman",
     author_email="josiah.chapman@gmail.com",
-    packages=find_packages(include=["src"]),
+    package_dir={"": "src"},
+    packages=["tchotchke"],
     tests_require=installation_requirements
 )
