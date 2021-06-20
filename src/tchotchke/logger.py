@@ -52,9 +52,33 @@ class Logger:
             raise TypeError()
         if not isinstance(data, dict) and data is not None:
             raise TypeError()
+        sprinkles = Logger.route_recurse(data)
+        return {
+            "message": message,
+            "sprinkles": sprinkles
+        }
+
+    @staticmethod
+    def route_recurse(value):
+        if isinstance(value, list):
+            return Logger.__repr_list(value)
+        elif isinstance(value, dict):
+            return Logger.__repr_dict(value)
+        else:
+            return repr(value)
+
+    @staticmethod
+    def __repr_list(data):
+        result = []
+        for value in data:
+            formatted_value = Logger.route_recurse(value)
+            result.append(formatted_value)
+        return result
+
+    @staticmethod
+    def __repr_dict(data):
         result = {}
-        if data is not None:
-            for key, value in data.items():
-                result[key] = repr(value)
-        result["message"] = message
+        for key, value in data.items():
+            formatted_value = Logger.route_recurse(value)
+            result[key] = formatted_value
         return result
