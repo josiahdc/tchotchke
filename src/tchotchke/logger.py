@@ -47,6 +47,7 @@ class Logger:
             sprinkles |= error.log_sprinkles
         output_log = self.__format_output_log(message, sprinkles)
         output_log["exception"] = traceback.format_exc()
+        output_log["error_message"] = str(error)
         serialized_output = ujson.dumps(output_log)
         self.__internal_logger.error(serialized_output)
 
