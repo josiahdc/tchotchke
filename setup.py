@@ -9,7 +9,7 @@ installation_requirements = [
 setup(
     name="tchotchke",
     description="Trinkets and baubles to adorn your pythonic pursuits.",
-    version="0.1.13",
+    version="0.1.14",
     url="https://github.com/josiahdc/tchotchke",
     author="Josiah Chapman",
     author_email="josiah.chapman@gmail.com",

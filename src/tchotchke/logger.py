@@ -4,7 +4,6 @@ from contextlib import contextmanager
 
 import loguru
 import ujson
-
 from tchotchke.exceptions import LoggableError
 
 
@@ -43,6 +42,8 @@ class Logger:
         self.__internal_logger.error(serialized_output)
 
     def exception(self, message, error, sprinkles=None):
+        if sprinkles is None:
+            sprinkles = {}
         if isinstance(error, LoggableError):
             sprinkles |= error.log_sprinkles
         output_log = self.__format_output_log(message, sprinkles)
