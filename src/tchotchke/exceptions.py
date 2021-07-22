@@ -5,6 +5,8 @@ class TchotchkeError(Exception):
 class LoggableError(TchotchkeError):
     def __init__(self, message=None, log_sprinkles=None):
         super().__init__(message)
+        if log_sprinkles is None:
+            log_sprinkles = {}
         self.log_sprinkles = log_sprinkles
 
 
