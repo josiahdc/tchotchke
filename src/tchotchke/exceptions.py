@@ -12,3 +12,7 @@ class LoggableError(TchotchkeError):
 
 class ConfigError(LoggableError):
     pass
+
+
+class ShellError(LoggableError):
+    pass
